@@ -1,0 +1,14 @@
+#!/bin/bash
+
+log_l=2
+
+function log_dbg {
+    [ "$log_l" -ge "3" ] && echo "$@"
+}
+
+function extract_archive {
+    echo -n "Extracting $1 ... "
+    log_dbg "tar -xf $1 ..."
+    tar -xf $1
+    echo "done"
+}

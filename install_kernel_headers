@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd $LFS/sources
+
+echo -n "Extracting linux-4.2.tar.xz ... "
+tar -xf linux-4.2.tar.xz
+echo "done"
+
+cd linux-4.2
+
+make INSTALL_HDR_PATH=dest headers_install
+
+mkdir -vp /tools/include
+cp -rv dest/include/* /tools/include
+
+cd $LFS/sources
+rm -rf linux-4.2
